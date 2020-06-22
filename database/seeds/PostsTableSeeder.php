@@ -37,16 +37,16 @@ class PostsTableSeeder extends Seeder
         $photo4 = Photo::create(["file"=>"7.jpg"]);
 
         $author1 = User::create([
-            "name"=>"John Doe",
-            "email"=>"johndoe@gmail.com",
+            "name"=>"WJohn Doe",
+            "email"=>"hello@gmail.com",
             "password"=>Hash::make('password'),
             "role_id"=>$role2->id,
             "photo_id"=>$photo1->id,
         ]);
 
         $author2 = User::create([
-            "name"=>"Truk Doe",
-            "email"=>"mwangidoe@gmail.com",
+            "name"=>"WTruk Does",
+            "email"=>"hellos@gmail.com",
             "password"=>Hash::make('password'),
             "role_id"=>$role3->id,
             "photo_id"=>$photo3->id,
@@ -55,7 +55,7 @@ class PostsTableSeeder extends Seeder
 
         $author3 = User::create([
             "name"=>"Miss Wilson",
-            "email"=>"lisaer@gmail.com",
+            "email"=>"slisaser@gmail.com",
             "password"=>Hash::make('password'),
              "role_id"=>$role4->id,
              "photo_id"=>$photo2->id,
