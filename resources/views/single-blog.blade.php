@@ -23,8 +23,6 @@
       
             </div>
           </header><!-- /.header -->
-      
-          {{-- Gravatar::src('cloudgraphicsolutions@gmail.com') --}}
         @endsection
     
         @section('content')
@@ -73,7 +71,7 @@
                             <img class="avatar avatar-sm mr-4" src="{{asset($comment->photo ? $comment->photo : Gravatar::src($comment->user->email))}}" alt="...">
                             <div class="media-body">
                               <div class="small-1">
-                                <strong>Maryam Amiri</strong>
+                                <strong>{{isset($comment) ? $comment->author : 'Random Author'}}</strong>
                                 <time class="ml-4 opacity-70 " datetime="">{{$comment->created_at->diffForHumans()}}</time>
                               </div>
                               <p class="small-2 mb-0">{{$comment->body}}</p>
@@ -108,5 +106,5 @@
             @endsection
         @endif
     @section('footer')
-    
+
     @endsection

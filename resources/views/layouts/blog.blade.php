@@ -29,7 +29,8 @@
           </a>
         </div>
         @if (!Auth::check())
-          <a class="btn btn-round btn-secondary text-success" href="{{route('login')}}">Login</a>
+          {{-- <a class="btn btn-round btn-secondary text-success" href="{{route('login')}}">Login</a> --}}
+          <a class="btn btn-round btn-secondary text-success" href="{{route('register')}}">Create Account</a>
           @else
           <a class="btn btn-round btn-secondary text-success" href="{{route('posts.create')}}">Create Post</a>
         @endif

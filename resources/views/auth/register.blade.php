@@ -71,7 +71,7 @@
 
           <hr class="w-30">
   
-          <p class="text-center text-muted small-2">Already a member? <a href="{{route('login')}}">Login here</a></p>
+          <p class="text-center text-muted small-1">Already a member? <a href="{{route('login')}}">Login here</a></p>
         </div>
   
       </main><!-- /.main-content -->

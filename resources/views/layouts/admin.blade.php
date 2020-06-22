@@ -28,18 +28,26 @@
                             <p>Posts</p>
                         </a>
                     </li>
+                    @if (Auth::check())
+                    @if (Auth::user()->isAdmin())
                     <li>
                         <a href="{{route('categories.index')}}">
                             <i class="tim-icons icon-atom"></i>
                             <p>Categories</p>
                         </a>
                     </li>
+                    @endif
+                    @endif
+                    @if (Auth::check())
+                    @if (Auth::user()->isAdmin())
                     <li>
                         <a href="{{route('tags.index')}}">
                             <i class="tim-icons icon-pin"></i>
                             <p>Tags</p>
                         </a>
                     </li>
+                    @endif
+                    @endif
                     @if (Auth::check())
                     @if (Auth::user()->isAdmin())
                     <li>
@@ -118,11 +126,11 @@
                                     </p>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                                    <li class="nav-link"><a href="#" class="nav-item dropdown-item">Hello {{Auth::user()->name}} and welcome to the admin area.</a>
+                                    <li class="nav-link"><a href="#" class="nav-item dropdown-item">Hello {{Auth::user()->name}} and welcome to your <br> account area.</a>
                                     </li>
                                     <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have a task to do by updating your profile.</a></li>
-                                    <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You my friend feel free to report a bug in this CMS to me via:</a></li>
-                                    <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Email: wilsonkinyuam@gmail.com Phone: +254717255460</a></li>
+                                    <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You my friend feel free to report <br> a bug in this CMS to me via:</a></li>
+                                    <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Email: wilsonkinyuam@gmail.com <br> Phone: +254717255460</a></li>
                                     <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Enjoy Your Stay!!! :)</a></li>
                                 </ul>
                             </li>
