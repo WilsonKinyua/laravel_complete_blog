@@ -13,11 +13,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::where("email","wilsonkinyuam@gmail.com")->first();
+        $user = User::where("email","wilsonkinyua@gmail.com")->first();
         if(!$user) {
             User::create([
                 "name"=>"Wilson Kinyua",
-                "email"=>"wilsonkinyuam@gmail.com",
+                "email"=>"wilsonkinyua@gmail.com",
                 'password' => Hash::make('lisaerwilson'),
                 "about"=>"Am a Full Stack Web developer who creates awesome websites with HTML, CSS, JAVASCRIPT, BOOTSTRAP, VANILLA PHP, LARAVEL",
                 "role_id"=>1,
