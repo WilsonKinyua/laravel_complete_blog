@@ -1,0 +1,19 @@
+heroku addons:create cleardb:ignite
+ 1605  heroku config | grep CLEARDB_DATABASE_URL
+ 1614  git init
+ 1615  git add .
+ 1616  git commit -m "final"
+ 1618  heroku create findblog
+ 1619  git push heroku master
+ 1620  heroku config:add APP_NAME=BLOG CMS
+ 1621  heroku config:add APP_ENV=production
+ 1622  heroku config:add APP_URL=https://findblogs.herokuapp.com/
+ 1623  heroku pg:credentials:url
+ 1624  heroku config:add DB_DATABASE=pgsql
+ 1625  heroku config:add DB_HOST=ec2-52-72-221-20.compute-1.amazonaws.com
+ 1626  heroku config:add DB_PORT=5432
+ 1627  heroku config:add DB_DATABASE=dbe6ron2c8tgda
+ 1628  heroku config:add DB_USERNAME=xnfszyavpzcngw
+ 1629  heroku config:add DB_PASSWORD=8dd8606805710b59264f0fe8bb32c69dea99c54a6854227e27e03354c3431066
+ 1630  heroku run bash
+ 1631  heroku run php artisan migrate
