@@ -1,6 +1,13 @@
 @extends('layouts.admin')
 
 
+@section('title')
+
+   All Posts
+
+@endsection
+
+
 @section('content')
 <div class="content">
     <div class="row">
@@ -33,6 +40,7 @@
                                         <th>Comments
                                             <br>(Click the number to <br> view and approve <br> comments)
                                         </th>
+    
                                         @if (Auth::check())
                                             @if (Auth::user()->isAdmin())
                                                 <th>Created By</th>
@@ -46,13 +54,13 @@
                                     @foreach ($posts as $post)
                                         <tr>
                                             <td><img style="width:120px!important; height:60px!important" class="rounded embed-responsive" src="{{asset($post->photo ? $post->photo->file : 'http://placehold.it/400x400')}}" alt=""></td>
-                                            <td>{{Str::limit($post->title,50)}}</td>
+                                            <td><a href="{{route('blog.show',$post->id)}}">{{Str::limit($post->title,50)}}</a></td>
                                             <td>{{$post->created_at->diffForHumans()}}</td>
                                             <td>{{$post->category ? $post->category->name : 'No category'}}</td>
                                             <td><a href="{{route('comments.show', $post->id)}}">{{$post->comments->count()}}</a></td>
                                             @if (Auth::check())
                                             @if (Auth::user()->isAdmin())
-                                            <td>{{$post->user->name}}</td>
+                                            <td>{{isset($post->user->name) ? $post->user->name : "Deleted User"}}</td>
                                             @endif
                                             @endif
                                             <td><a href="{{route('posts.edit',$post->id)}}" class="btn btn-success">Edit</a></td>

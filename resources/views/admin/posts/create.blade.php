@@ -8,6 +8,12 @@
 
 @endsection
 
+@section('title')
+
+    Post {{isset($post) ?  $post->name : ''}} 
+
+@endsection
+
 @section('content')
 
 <div class="content">
@@ -19,6 +25,10 @@
                 <div class="card-header">
                     <h5 class="title">{{isset($post) ? 'Edit Post' :'Create Post'}}</h5>
                          @include('partials.errors') 
+                         <div class="alert alert-danger alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>    
+                            <strong>Note: Published time and date should be less than the date today if the post created is to be published now.</strong>
+                        </div>
                 </div>
                 <div class="card-body">
                     <form action="{{isset($post) ? route('posts.update',$post->id) : route('posts.store')}}" method="POST" enctype="multipart/form-data">

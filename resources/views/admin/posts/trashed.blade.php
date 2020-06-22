@@ -1,5 +1,11 @@
 @extends('layouts.admin')
 
+@section('title')
+
+    Trashed Posts
+
+@endsection
+
 
 @section('content')
 <div class="content">

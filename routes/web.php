@@ -28,8 +28,6 @@ Auth::routes();
 
 
 
-
-
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
@@ -48,11 +46,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get("user/edit-profile","UsersController@editProfile")->name("user.edit-profile");
 
+    Route::resource("update-profile","UpdateProfileController");
+
+    Route::patch("/user/update-password/{user}","UpdateProfileController@updatePassword")->name("user.update-password");
+
     Route::resource('todos', 'TodosController');
 
     Route::resource('comments', 'CommentsController');
 
-    
 });
 
 
@@ -68,3 +69,5 @@ Route::group(['middleware' => ['admin','auth']], function () {
 
 
 });
+
+

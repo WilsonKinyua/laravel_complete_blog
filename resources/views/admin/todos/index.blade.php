@@ -1,5 +1,10 @@
 @extends('layouts.admin')
 
+@section('title')
+
+    All Todos
+
+@endsection
 
 @section('content')
 

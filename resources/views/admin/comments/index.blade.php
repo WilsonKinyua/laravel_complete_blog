@@ -1,5 +1,11 @@
 @extends('layouts.admin')
 
+@section('title')
+
+   All Comments
+
+@endsection
+
 
 @section('content')
 <div class="content">

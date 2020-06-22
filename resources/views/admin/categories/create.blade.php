@@ -8,6 +8,12 @@
 
 @endsection
 
+@section('title')
+
+   Category {{isset($category) ?  $category->name : ''}} 
+
+@endsection
+
 @section('content')
 
 <div class="content">

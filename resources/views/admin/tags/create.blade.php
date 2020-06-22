@@ -1,5 +1,11 @@
 @extends('layouts.admin')
 
+@section('title')
+
+    Tag {{isset($tag) ?  $tag->name : ''}} 
+
+@endsection
+
 @section('css')
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.3/trix.min.css">

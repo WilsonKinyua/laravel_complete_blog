@@ -13,7 +13,7 @@
                   <p class="opacity-70 text-uppercase small ls-1">{{$post->category ? $post->category->name : 'No Category'}}</p>
                     <h1 class="display-4 mt-7 mb-8">{{$post->title ? $post->title : 'No title for this Post'}}</h1>
                   <p><span class="opacity-70 mr-1">By</span> <a class="text-white" href="#">{{$post->user ? $post->user->name : "Wilson Kinyua"}}</a></p>
-                  <p><img class="avatar avatar-sm" src="{{asset($post->user->photo ? $post->user->photo->file : Gravatar::src($post->user->email))}}" alt="..."></p>
+                  <p><img class="avatar avatar-sm" src="{{asset($post->user->photo ? $post->user->photo->file : Gravatar::src('cloudgraphicsolutions@gmail.com'))}}" alt="..."></p>
                 </div>
                 <div class="col-12 align-self-end text-center">
                   <a class="scroll-down-1 scroll-down-white" href="#section-content"><span></span></a>
@@ -24,7 +24,7 @@
             </div>
           </header><!-- /.header -->
       
-            
+          {{-- Gravatar::src('cloudgraphicsolutions@gmail.com') --}}
         @endsection
     
         @section('content')

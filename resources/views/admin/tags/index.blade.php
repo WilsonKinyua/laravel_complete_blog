@@ -1,5 +1,10 @@
 @extends('layouts.admin')
 
+@section('title')
+
+   All Tags
+
+@endsection
 
 @section('content')
 <div class="content">

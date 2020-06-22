@@ -4,18 +4,24 @@
     
 @endsection
 
+@section('title')
+
+   Update Profile {{$user->name}} 
+   
+@endsection
+
 @section('content')
 <div class="content">
     <div class="row">
       <div class="col-md-8">
         <div class="card">
           <div class="card-header">
-          <h3 class="title">Edit Profile for: <span class="text-uppercase"><strong>{{$user->name}}</strong></span></h3>
+          <h3 class="title">Welcome : <span class="text-uppercase"><strong>{{$user->name}}</strong></span> To Update Profile Page</h3>
           @include('partials.flash-messages') 
           @include('partials.errors') 
           </div>
           <div class="card-body">
-            <form action="{{route('users.update',$user->id)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('update-profile.update',$user->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method("PATCH")
               <div class="row">
@@ -44,25 +50,18 @@
                 <div class="col-md-8">
                   <div class="form-group">
                     <label>About Me</label>
-                    <textarea rows="4" cols="80" class="form-control" name="about" value="{{$user->about}}"></textarea>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" name="password">
+                    <textarea rows="4" cols="80" class="form-control" name="about" value="">{{$user->about}}</textarea>
                   </div>
                 </div>
               </div>
               <div class="card-footer">
-                <button type="submit" class="btn btn-fill btn-primary col-md-3">Update</button>
+                <button type="submit" class="btn btn-fill btn-primary col-md-3">Update Profile</button>
               </div>
             </form>
           </div>
         </div>
       </div>
+
       <div class="col-md-4">
         <div class="card card-user">
           <div class="card-body">
@@ -73,14 +72,14 @@
                 <div class="block block-three"></div>
                 <div class="block block-four"></div>
                 <a href="javascript:void(0)">
-                  <img class="avatar" src="{{asset($user->photo ? $user->photo->file : 'http://placehold.it/400x400')}}" alt="...">
+                  <img class="avatar" src="{{asset($user->photo ? $user->photo->file : Gravatar::src($user->email))}}" alt="...">
                   <h5 class="title">{{$user->name}}</h5>
                 </a>
               </div>
             </p>
             <div class="card-description">
                 <h5 class="title">About Me</h5>
-             {{$user->about ? $user->about : ' Do not be scared of the truth because we need to restart the human foundation in truth And I love you like ...'}}
+             {{$user->about ? $user->about : ' Do not be scared of the truth because we need to restart the human foundation in truth And I love you like ...(CHANGE ME THIS IS A DEFAULT ABOUT ME)'}}
             </div>
           </div>
           <div class="card-footer">

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Photo;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller
+class UpdateProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view("admin.users.index")->with("users", User::all());
+        return view("admin.users.update-password")->with("user",auth()->user());
     }
 
     /**
@@ -50,6 +50,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**
@@ -58,9 +59,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        return view("admin.users.edit")->with("user", $user);
+        //
     }
 
     /**
@@ -77,7 +78,7 @@ class UsersController extends Controller
             "name" => $request->name,
             "email" => $user->email,
             "about" => $request->about,
-            "password" => Hash::make($request->password),
+            // "password" => Hash::make($request->password),
         ]);
 
         if ($file = $request->file("photo_id")) {
@@ -103,51 +104,17 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::withTrashed()->where('id', $id)->firstOrFail();
-
-        if ($user->trashed()) {
-            unlink(public_path() . $user->photo->file);
-            $user->forceDelete();
-        } else {
-
-            $user->delete();
-        }
-
-        session()->flash("success", "User deleted successfully");
-        return redirect(route("users.index"));
+        //
     }
 
-    public function makeAdmin(User $user)
+    public function updatePassword(UpdateProfileRequest $request, $id)
     {
-        $user->role_id = 1;
-        $user->save();
-        session()->flash("success", "User made Admin successfully");
+        $user = User::findOrFail($id);
+        $data = ([
+            "password" => Hash::make($request->password),
+        ]);
+        $user->update($data);
+        session()->flash("success", "Password Updated successfully");
         return redirect()->back();
-    }
-
-
-    public function editProfile()
-    {
-        return view("admin.users.update-profile")->with("user", auth()->user());
-    }
-
-    public function destroyAccount()
-    {
-        $user = auth()->user();
-
-        if($user->posts->count()) {
-            session()->flash("error" , "Account cannot be deleted because it contains posts!!!!");
-            return redirect()->back();
-        }
-
-        $user->delete();
-        session()->flash("error", "Account has been deleted successfully");
-        return redirect('/');
-    }
-
-    public function trashedAccounts()
-    {
-        $trashed = User::onlyTrashed()->get();
-        return view("admin.users.index")->withUsers($trashed);
     }
 }
