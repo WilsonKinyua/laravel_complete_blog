@@ -129,7 +129,7 @@ class PostsController extends Controller
             $name = time() . $file->getClientOriginalName();
             $file->move("images", $name);
 
-            if($post->photo->file){
+            if(file_exists($post->photo->file)){
 
                 unlink(public_path() . $post->photo->file);
             }

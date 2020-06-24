@@ -12,7 +12,7 @@ class WelcomeController extends Controller
     
     public function index() {
         return view("welcome")
-        ->with("posts", Post::searched()->simplePaginate(10))
+        ->with("posts", Post::searched()->simplePaginate(8))
         ->with("categories",Category::all())
         ->with("tags",Tag::all())
         ->with("newest",Post::searched()->simplePaginate(6));
@@ -35,7 +35,7 @@ class WelcomeController extends Controller
     public function category(Category $category) {
         return view("blog.category")
         ->with("category",$category)
-        ->with("posts",$category->posts()->searched()->simplePaginate(10))
+        ->with("posts",$category->posts()->searched()->simplePaginate(8))
         ->with("categories",Category::all())
         ->with("tags", Tag::all())
         ->with("newest",Post::searched()->simplePaginate(6));
@@ -44,7 +44,7 @@ class WelcomeController extends Controller
     public function tag(Tag $tag) {
         return view("blog.tag")
         ->with("category",$tag)
-        ->with("posts",$tag->posts()->searched()->simplePaginate(10))
+        ->with("posts",$tag->posts()->searched()->simplePaginate(8))
         ->with("categories",Category::all())
         ->with("tags", Tag::all())
         ->with("newest",Post::searched()->simplePaginate(6));

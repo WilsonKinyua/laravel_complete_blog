@@ -6,11 +6,11 @@ class Post extends Model
 {
     use SoftDeletes;
    
-    public function deleteImage() {
+    // public function deleteImage() {
 
-       return unlink(public_path() . '/images/' . $this->image);
+    //    return unlink(public_path() . '/images/' . $this->image);
         
-    }
+    // }
     
     public function user() {
 

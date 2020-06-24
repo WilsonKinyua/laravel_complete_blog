@@ -40,7 +40,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Title: </label>
-                                    <input type="text" class="form-control" name="title" value="{{isset($post) ? $post->title : ''}}">
+                                    <input type="text" class="form-control" name="title" value="{{isset($post) ? $post->title : ''}} {{old('title')}}">
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             <div class="col-md-6 pl-md-1">
                                 <div class="form-group">
                                     <label>Published At</label>
-                                    <input id="published_at" type="text" name="published_at" class="form-control text-danger">
+                                    <input id="published_at" type="text" name="published_at" class="form-control text-danger" value="{{old('published_at')}}">
                                 </div>
                             </div>
                         </div>
@@ -90,8 +90,8 @@
                                 <div class="form-group">
                                     <label>Description:</label>
                                     {{-- <textarea name="description" id="description" cols="10" class="form-control" rows="5">{{isset($post) ? $post->short_description : ''}}</textarea> --}}
-                                    <input id="description" type="hidden" name="description">
-                                    <trix-editor input="description">{{isset($post) ? $post->short_description : ''}}</trix-editor>
+                                    <input id="description" type="hidden" name="description" value="{{old('description')}}">
+                                    <trix-editor input="description">{{isset($post) ? $post->short_description : ''}} </trix-editor>
                                 </div>
                             </div>
                         </div>
@@ -100,8 +100,8 @@
                                 <div class="form-group">
                                     <label>Content:</label>
                                     {{-- <textarea name="content" id="content" cols="30" class="form-control" rows="10">{{isset($post) ? $post->content : ''}}</textarea> --}}
-                                    <input id="content" type="hidden" name="content">
-                                    <trix-editor input="content">{{isset($post) ? $post->content : ''}}</trix-editor>
+                                    <input id="content" type="hidden" name="content" value="{{old('content')}}">
+                                    <trix-editor input="content">{{isset($post) ? $post->content : ''}} </trix-editor>
                                 </div>
                             </div>
                         </div>
@@ -156,3 +156,5 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
 @endsection
+
+

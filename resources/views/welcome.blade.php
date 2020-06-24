@@ -38,10 +38,10 @@
             <div class="row gap-y">
               @if ($posts)
               @forelse ($posts as $post)
-              <div class="col-md-6">
+              <div class="col-md-6" style="height:600px!important">
                 <div class="card border hover-shadow-6 mb-6 d-block">
                   <a href="{{route('blog.show',$post->id)}}"><img class="card-img-top" width="100%" style="height:270px" src="{{asset($post->photo ? $post->photo->file : 'http://placehold.it/400x400')}}" alt="Card image cap"></a>
-                  <div class="p-6 text-center">
+                  <div style="height:200px!important" class="p-6 text-center">
                     <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="{{route('blog.show',$post->id)}}">{{$post->category->name ? $post->category->name : 'No Category'}}</a></p>
                     <h5 class="mb-0"><a class="text-dark" href="{{route('blog.show',$post->id)}}">{{$post->title ? $post->title : 'No title For This Post' }}</a></h5>
                   </div>
